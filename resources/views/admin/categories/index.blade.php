@@ -4,9 +4,12 @@
     <div class="container">
         @if (session('success_delete'))
             <div class="alert alert-warning" role="alert">
-                Il categoria {{ session('success_delete')->name }} è stato eliminata correttamente.
+                La categoria {{ session('success_delete')->name }} è stato eliminata correttamente.
             </div>
         @endif
+
+        <h1>Categorie</h1>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -17,16 +20,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $categoria)
+                @foreach ($categories as $category)
                     <tr>
-                        <th scope="row">{{ $categoria->id }}</th>
-                        <td>{{ $categoria->slug }}</td>
-                        <td>{{ $categoria->name }}</td>
+                        <th scope="row">{{ $category->id }}</th>
+                        <td>{{ $category->slug }}</td>
+                        <td>{{ $category->name }}</td>
 
                         <td>
-                            <a href="{{ route('admin.categories.show', ['categoria' => $categoria]) }}" class="btn btn-primary">Visita</a>
-                            <a href="{{ route('admin.categories.edit', ['categoria' => $categoria]) }}" class="btn btn-warning">Edita</a>
-                            <form action="{{ route('admin.categories.destroy', ['categoria' => $categoria]) }}" method="categoria">
+                            <a href="{{ route('admin.categories.show', ['category' => $category]) }}" class="btn btn-primary">Visita</a>
+                            <a href="{{ route('admin.categories.edit', ['category' => $category]) }}" class="btn btn-warning">Edita</a>
+                            <form action="{{ route('admin.categories.destroy', ['category' => $category]) }}" method="category">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-danger btn-delete-me">Elimina</button>
